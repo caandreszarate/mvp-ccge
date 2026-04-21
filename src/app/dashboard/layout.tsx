@@ -10,11 +10,25 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   if (!user) redirect('/auth/login')
 
-  const { data: perfil } = await supabase
+  let { data: perfil } = await supabase
     .from('perfiles')
     .select('*')
     .eq('id', user.id)
     .single()
+
+  if (!perfil) {
+    const meta = user.user_metadata ?? {}
+    const { data: nuevoPerfil } = await supabase
+      .from('perfiles')
+      .upsert({
+        id: user.id,
+        nombre: meta.nombre ?? user.email?.split('@')[0] ?? 'Usuario',
+        apellidos: meta.apellidos ?? '',
+      })
+      .select()
+      .single()
+    perfil = nuevoPerfil
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex">

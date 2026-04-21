@@ -22,11 +22,26 @@ export default async function DashboardPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/login')
 
-  const { data: perfil } = await supabase
+  let { data: perfil } = await supabase
     .from('perfiles')
     .select('*')
     .eq('id', user.id)
     .single()
+
+  // Si no existe el perfil (usuario registrado antes del schema), lo creamos
+  if (!perfil) {
+    const meta = user.user_metadata ?? {}
+    const { data: nuevoPerfil } = await supabase
+      .from('perfiles')
+      .upsert({
+        id: user.id,
+        nombre: meta.nombre ?? user.email?.split('@')[0] ?? 'Usuario',
+        apellidos: meta.apellidos ?? '',
+      })
+      .select()
+      .single()
+    perfil = nuevoPerfil
+  }
 
   const { data: empresas } = await supabase
     .from('empresas')
