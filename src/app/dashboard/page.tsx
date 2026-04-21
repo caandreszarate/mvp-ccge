@@ -75,7 +75,12 @@ export default async function DashboardPage() {
   const tramitesPendientes = (tramites ?? []).filter((t) => t.estado === 'pendiente').length
   const totalCertificados = certificados?.length ?? 0
 
-  const nombre = perfil?.nombre ?? 'Usuario'
+  // Prioridad: DB → user_metadata del token → prefijo del email
+  const nombre =
+    (perfil?.nombre && perfil.nombre !== 'Usuario' ? perfil.nombre : null)
+    ?? user.user_metadata?.nombre
+    ?? user.email?.split('@')[0]
+    ?? 'Usuario'
 
   return (
     <div className="space-y-8">
