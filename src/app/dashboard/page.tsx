@@ -28,19 +28,26 @@ export default async function DashboardPage() {
     .eq('id', user.id)
     .single()
 
-  // Si no existe el perfil (usuario registrado antes del schema), lo creamos
+  const meta = user.user_metadata ?? {}
+  const nombreReal = meta.nombre || user.email?.split('@')[0] || 'Usuario'
+  const apellidosReal = meta.apellidos || ''
+
+  // Perfil no existe → crearlo
   if (!perfil) {
-    const meta = user.user_metadata ?? {}
-    const { data: nuevoPerfil } = await supabase
+    const { data: nuevo } = await supabase
       .from('perfiles')
-      .upsert({
-        id: user.id,
-        nombre: meta.nombre ?? user.email?.split('@')[0] ?? 'Usuario',
-        apellidos: meta.apellidos ?? '',
-      })
+      .upsert({ id: user.id, nombre: nombreReal, apellidos: apellidosReal })
       .select()
       .single()
-    perfil = nuevoPerfil
+    perfil = nuevo
+  }
+  // Perfil existe pero con nombre genérico → actualizarlo con datos reales
+  else if (perfil.nombre === 'Usuario' && nombreReal !== 'Usuario') {
+    await supabase
+      .from('perfiles')
+      .update({ nombre: nombreReal, apellidos: apellidosReal })
+      .eq('id', user.id)
+    perfil = { ...perfil, nombre: nombreReal, apellidos: apellidosReal }
   }
 
   const { data: empresas } = await supabase

@@ -16,18 +16,23 @@ export default async function DashboardLayout({ children }: { children: React.Re
     .eq('id', user.id)
     .single()
 
+  const meta = user.user_metadata ?? {}
+  const nombreReal = meta.nombre || user.email?.split('@')[0] || 'Usuario'
+  const apellidosReal = meta.apellidos || ''
+
   if (!perfil) {
-    const meta = user.user_metadata ?? {}
-    const { data: nuevoPerfil } = await supabase
+    const { data: nuevo } = await supabase
       .from('perfiles')
-      .upsert({
-        id: user.id,
-        nombre: meta.nombre ?? user.email?.split('@')[0] ?? 'Usuario',
-        apellidos: meta.apellidos ?? '',
-      })
+      .upsert({ id: user.id, nombre: nombreReal, apellidos: apellidosReal })
       .select()
       .single()
-    perfil = nuevoPerfil
+    perfil = nuevo
+  } else if (perfil.nombre === 'Usuario' && nombreReal !== 'Usuario') {
+    await supabase
+      .from('perfiles')
+      .update({ nombre: nombreReal, apellidos: apellidosReal })
+      .eq('id', user.id)
+    perfil = { ...perfil, nombre: nombreReal, apellidos: apellidosReal }
   }
 
   return (
