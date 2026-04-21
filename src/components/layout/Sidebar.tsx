@@ -13,6 +13,7 @@ import {
 import { cn } from '@/lib/utils'
 import { createClient } from '@/lib/supabase/client'
 import { Perfil } from '@/types'
+import Logo from '@/components/ui/Logo'
 
 const nav = [
   { href: '/dashboard', label: 'Inicio', icon: LayoutDashboard },
@@ -35,14 +36,8 @@ export default function Sidebar({ perfil }: { perfil: Perfil | null }) {
   return (
     <aside className="w-60 shrink-0 bg-white border-r border-gray-100 min-h-screen flex flex-col">
       {/* Logo */}
-      <div className="h-16 border-b border-gray-100 flex items-center px-5 gap-2.5">
-        <div className="w-8 h-8 bg-green-700 rounded-lg flex items-center justify-center">
-          <Building2 className="w-4 h-4 text-white" />
-        </div>
-        <div>
-          <div className="font-bold text-gray-900 text-sm leading-none">CCGE</div>
-          <div className="text-[10px] text-gray-400 leading-none mt-0.5">Guinea Ecuatorial</div>
-        </div>
+      <div className="h-16 border-b border-gray-100 flex items-center px-4">
+        <Logo variant="mini" href="/" />
       </div>
 
       {/* Nav */}

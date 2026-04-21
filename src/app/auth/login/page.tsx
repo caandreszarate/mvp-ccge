@@ -3,12 +3,13 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Building2, Loader2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { createClient } from '@/lib/supabase/client'
+import Logo from '@/components/ui/Logo'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -41,15 +42,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 justify-center">
-            <div className="w-10 h-10 bg-green-700 rounded-xl flex items-center justify-center">
-              <Building2 className="w-6 h-6 text-white" />
-            </div>
-            <div className="text-left">
-              <div className="font-bold text-gray-900 text-sm leading-none">CCGE</div>
-              <div className="text-xs text-gray-500 leading-none">Guinea Ecuatorial</div>
-            </div>
-          </Link>
+          <Logo variant="mini" href="/" className="justify-center" />
           <h1 className="mt-6 text-2xl font-bold text-gray-900">Bienvenido de vuelta</h1>
           <p className="mt-1 text-sm text-gray-500">Accede a tu portal empresarial</p>
         </div>

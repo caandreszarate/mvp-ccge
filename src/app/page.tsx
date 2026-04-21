@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import Logo from '@/components/ui/Logo'
 import {
   Building2,
   FileText,
@@ -8,7 +9,6 @@ import {
   RefreshCw,
   ArrowRight,
   CheckCircle2,
-  Shield,
   Clock,
 } from 'lucide-react'
 
@@ -48,15 +48,7 @@ export default function LandingPage() {
       {/* Header */}
       <header className="border-b border-gray-100 bg-white sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-green-700 rounded-lg flex items-center justify-center">
-              <Building2 className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <span className="font-semibold text-gray-900 text-sm leading-none block">CCGE</span>
-              <span className="text-xs text-gray-500 leading-none">Guinea Ecuatorial</span>
-            </div>
-          </div>
+          <Logo variant="mini" href="/" />
           <nav className="hidden md:flex items-center gap-6 text-sm text-gray-600">
             <Link href="#servicios" className="hover:text-gray-900 transition-colors">Servicios</Link>
             <Link href="#como-funciona" className="hover:text-gray-900 transition-colors">Cómo funciona</Link>
@@ -198,14 +190,11 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="border-t border-gray-100 py-8">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-green-700" />
-            <span>Cámara de Comercio de Guinea Ecuatorial — Portal Oficial</span>
-          </div>
-          <div className="flex items-center gap-2">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+          <Logo variant="full" href="/" />
+          <div className="flex items-center gap-2 text-sm text-gray-400">
             <Clock className="w-4 h-4" />
-            <span>Atención digital 24/7</span>
+            <span>Atención digital 24/7 · Portal Oficial</span>
           </div>
         </div>
       </footer>
