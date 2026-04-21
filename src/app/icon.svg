@@ -1,0 +1,15 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#FFFFFF"/>
+
+  <!-- C verde -->
+  <circle cx="26" cy="24" r="14" fill="#169B4A"/>
+  <circle cx="30" cy="24" r="8" fill="#FFFFFF"/>
+
+  <!-- C azul -->
+  <circle cx="42" cy="24" r="14" fill="#2F80ED"/>
+  <circle cx="38" cy="24" r="8" fill="#FFFFFF"/>
+
+  <!-- Iniciales -->
+  <text x="16" y="54" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#E94E4E">G</text>
+  <text x="34" y="54" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#555555">E</text>
+</svg>

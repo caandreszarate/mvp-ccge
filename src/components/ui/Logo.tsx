@@ -7,41 +7,28 @@ interface LogoProps {
   className?: string
 }
 
-/** Símbolo CC — dos C entrelazadas (verde + azul) sobre fondo rojo */
+/** Símbolo CC — fiel al logo oficial CCGE (fondo blanco, C verde + C azul + GE) */
 function CcSymbol({ size = 32 }: { size?: number }) {
   const s = size
-  const cx1 = s * 0.30
-  const cx2 = s * 0.55
-  const cy = s * 0.42
-  const r = s * 0.22
-  const ri = s * 0.13
+  // Proporciones basadas en el SVG oficial 64x64
+  const cx1 = s * 0.406   // 26/64
+  const cx2 = s * 0.656   // 42/64
+  const cy  = s * 0.375   // 24/64
+  const r   = s * 0.219   // 14/64
+  const ri  = s * 0.125   // 8/64
 
   return (
     <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`} xmlns="http://www.w3.org/2000/svg">
-      <rect width={s} height={s} rx={s * 0.18} fill="#E30613" />
+      <rect width={s} height={s} rx={s * 0.12} fill="#FFFFFF" />
       {/* C verde */}
-      <circle cx={cx1} cy={cy} r={r} fill="#1FAF5A" />
-      <circle cx={cx1 + s * 0.065} cy={cy} r={ri} fill="#E30613" />
+      <circle cx={cx1} cy={cy} r={r} fill="#169B4A" />
+      <circle cx={cx1 + s * 0.062} cy={cy} r={ri} fill="#FFFFFF" />
       {/* C azul */}
-      <circle cx={cx2} cy={cy} r={r} fill="#4A90E2" />
-      <circle cx={cx2 - s * 0.065} cy={cy} r={ri} fill="#E30613" />
-      {/* GE letras pequeñas */}
-      <text
-        x={s * 0.18}
-        y={s * 0.92}
-        fontFamily="Arial, sans-serif"
-        fontSize={s * 0.22}
-        fontWeight="bold"
-        fill="#FF6B6B"
-      >G</text>
-      <text
-        x={s * 0.50}
-        y={s * 0.92}
-        fontFamily="Arial, sans-serif"
-        fontSize={s * 0.22}
-        fontWeight="bold"
-        fill="#BFBFBF"
-      >E</text>
+      <circle cx={cx2} cy={cy} r={r} fill="#2F80ED" />
+      <circle cx={cx2 - s * 0.062} cy={cy} r={ri} fill="#FFFFFF" />
+      {/* GE */}
+      <text x={s * 0.25} y={s * 0.9} fontFamily="Arial, sans-serif" fontSize={s * 0.28} fontWeight="bold" fill="#E94E4E">G</text>
+      <text x={s * 0.53} y={s * 0.9} fontFamily="Arial, sans-serif" fontSize={s * 0.28} fontWeight="bold" fill="#555555">E</text>
     </svg>
   )
 }
@@ -56,7 +43,7 @@ function LogoFull() {
           Cámara de Comercio
         </div>
         <div className="flex items-baseline gap-1 mt-0.5">
-          <span className="text-lg font-bold text-[#4A90E2] leading-none">Guinea</span>
+          <span className="text-lg font-bold text-[#2F80ED] leading-none">Guinea</span>
           <span className="text-base font-medium text-gray-400 leading-none">Ecuatorial</span>
         </div>
       </div>
