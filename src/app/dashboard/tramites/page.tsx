@@ -33,7 +33,7 @@ export default async function TramitesPage() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
           { label: 'Total', value: stats.total, color: 'text-gray-900', bg: 'bg-gray-50' },
           { label: 'Pendientes', value: stats.pendientes, color: 'text-yellow-700', bg: 'bg-yellow-50' },

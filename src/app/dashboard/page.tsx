@@ -58,24 +58,26 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-900">
             Hola, {nombre} 👋
           </h1>
-          <p className="text-gray-500 mt-1 text-sm">
-            Portal empresarial · Cámara de Comercio de Guinea Ecuatorial
+          <p className="text-gray-500 mt-1 text-xs md:text-sm">
+            Cámara de Comercio de Guinea Ecuatorial
           </p>
         </div>
-        <Link href="/dashboard/empresa/nueva">
-          <Button className="bg-green-700 hover:bg-green-800 text-white gap-2">
-            <Plus className="w-4 h-4" /> Nueva empresa
+        <Link href="/dashboard/empresa/nueva" className="shrink-0">
+          <Button size="sm" className="bg-green-700 hover:bg-green-800 text-white gap-1.5">
+            <Plus className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Nueva empresa</span>
+            <span className="sm:hidden">Nueva</span>
           </Button>
         </Link>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
         <Card className="border-0 shadow-sm">
           <CardContent className="pt-6">
             <div className="flex items-center gap-3">

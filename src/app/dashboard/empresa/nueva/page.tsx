@@ -139,30 +139,24 @@ export default function NuevaEmpresaPage() {
 
   if (exito) {
     return (
-      <div className="max-w-lg mx-auto text-center py-16">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+      <div className="max-w-lg mx-auto text-center py-10 px-2">
+        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
           <CheckCircle2 className="w-8 h-8 text-green-700" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">¡Empresa registrada!</h1>
-        <p className="text-gray-500 mb-6">
+        <h1 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">¡Empresa registrada!</h1>
+        <p className="text-gray-500 mb-6 text-sm">
           Tu empresa ha sido registrada exitosamente. Tu trámite está en revisión.
         </p>
-        <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-8">
+        <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6">
           <div className="text-xs text-green-700 font-medium mb-1">Número de matrícula</div>
-          <div className="text-2xl font-bold text-green-800 font-mono">{exito.matricula}</div>
+          <div className="text-xl md:text-2xl font-bold text-green-800 font-mono break-all">{exito.matricula}</div>
           <div className="text-xs text-green-600 mt-1">Guarda este número — es tu identificador oficial</div>
         </div>
-        <div className="flex gap-3 justify-center">
-          <Button
-            variant="outline"
-            onClick={() => router.push('/dashboard/tramites')}
-          >
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Button variant="outline" className="w-full sm:w-auto" onClick={() => router.push('/dashboard/tramites')}>
             Ver mis trámites
           </Button>
-          <Button
-            className="bg-green-700 hover:bg-green-800 text-white"
-            onClick={() => router.push('/dashboard')}
-          >
+          <Button className="w-full sm:w-auto bg-green-700 hover:bg-green-800 text-white" onClick={() => router.push('/dashboard')}>
             Ir al dashboard
           </Button>
         </div>
@@ -223,7 +217,7 @@ export default function NuevaEmpresaPage() {
             <h2 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
               <User className="w-4 h-4 text-green-700" /> Datos del titular
             </h2>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <Label htmlFor="nombre">Nombre *</Label>
                 <Input id="nombre" name="nombre" value={form.nombre} onChange={handleChange} placeholder="Juan" required />
@@ -333,11 +327,9 @@ export default function NuevaEmpresaPage() {
               <Label htmlFor="direccion">Dirección *</Label>
               <Input id="direccion" name="direccion" value={form.direccion} onChange={handleChange} placeholder="Calle de la Independencia, 12" required />
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-1.5">
-                <Label htmlFor="email">Correo empresa</Label>
-                <Input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="info@empresa.gq" />
-              </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="email">Correo empresa</Label>
+              <Input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="info@empresa.gq" />
             </div>
 
             {/* Resumen */}

@@ -53,8 +53,8 @@ export default function LandingPage() {
             <Link href="#servicios" className="hover:text-gray-900 transition-colors">Servicios</Link>
             <Link href="#como-funciona" className="hover:text-gray-900 transition-colors">Cómo funciona</Link>
           </nav>
-          <div className="flex items-center gap-3">
-            <Link href="/auth/login">
+          <div className="flex items-center gap-2">
+            <Link href="/auth/login" className="hidden sm:block">
               <Button variant="ghost" size="sm">Iniciar sesión</Button>
             </Link>
             <Link href="/auth/register">
@@ -67,51 +67,51 @@ export default function LandingPage() {
       </header>
 
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-4 pt-20 pb-24 text-center">
-        <Badge className="mb-6 bg-green-50 text-green-700 border-green-200 hover:bg-green-50">
+      <section className="max-w-6xl mx-auto px-4 pt-12 pb-16 md:pt-20 md:pb-24 text-center">
+        <Badge className="mb-5 bg-green-50 text-green-700 border-green-200 hover:bg-green-50 text-xs md:text-sm">
           Portal Oficial · República de Guinea Ecuatorial
         </Badge>
-        <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-5 leading-tight tracking-tight">
           Registra y gestiona tu empresa
           <span className="text-green-700 block">sin complicaciones</span>
         </h1>
-        <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-10">
+        <p className="text-base md:text-xl text-gray-500 max-w-2xl mx-auto mb-8">
           La plataforma digital de la Cámara de Comercio de Guinea Ecuatorial.
           Trámites empresariales rápidos, seguros y desde cualquier lugar.
         </p>
-        <div className="flex items-center justify-center gap-4 flex-wrap">
-          <Link href="/auth/register">
-            <Button size="lg" className="bg-green-700 hover:bg-green-800 text-white gap-2">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <Link href="/auth/register" className="w-full sm:w-auto">
+            <Button size="lg" className="w-full sm:w-auto bg-green-700 hover:bg-green-800 text-white gap-2">
               Registrar mi empresa <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
-          <Link href="/auth/login">
-            <Button size="lg" variant="outline">Acceder al portal</Button>
+          <Link href="/auth/login" className="w-full sm:w-auto">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto">Acceder al portal</Button>
           </Link>
         </div>
 
-        <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
+        <div className="mt-12 grid grid-cols-3 gap-4 max-w-xs mx-auto">
           {[
             { num: '100%', label: 'Digital' },
             { num: '24/7', label: 'Disponible' },
             { num: '8', label: 'Provincias' },
           ].map((s) => (
             <div key={s.label} className="text-center">
-              <div className="text-3xl font-bold text-green-700">{s.num}</div>
-              <div className="text-sm text-gray-500 mt-1">{s.label}</div>
+              <div className="text-2xl md:text-3xl font-bold text-green-700">{s.num}</div>
+              <div className="text-xs md:text-sm text-gray-500 mt-1">{s.label}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Servicios */}
-      <section id="servicios" className="bg-gray-50 py-20">
+      <section id="servicios" className="bg-gray-50 py-14 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">Todo lo que necesitas</h2>
-          <p className="text-gray-500 text-center mb-12 max-w-xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-3">Todo lo que necesitas</h2>
+          <p className="text-gray-500 text-center mb-10 max-w-xl mx-auto text-sm md:text-base">
             Una plataforma integrada para todos los trámites de tu empresa.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {servicios.map((s) => (
               <div
                 key={s.titulo}
@@ -129,11 +129,11 @@ export default function LandingPage() {
       </section>
 
       {/* Cómo funciona */}
-      <section id="como-funciona" className="py-20">
+      <section id="como-funciona" className="py-14 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Simple, rápido y seguro</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-5">Simple, rápido y seguro</h2>
               <div className="space-y-4">
                 {ventajas.map((v) => (
                   <div key={v} className="flex items-start gap-3">
@@ -174,9 +174,9 @@ export default function LandingPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-green-700 py-16">
+      <section className="bg-green-700 py-12 md:py-16">
         <div className="max-w-3xl mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">Formaliza tu negocio hoy</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">Formaliza tu negocio hoy</h2>
           <p className="text-green-100 mb-8">
             Gestiona todos tus trámites empresariales de forma digital, segura y oficial.
           </p>
